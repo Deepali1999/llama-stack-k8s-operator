@@ -15,5 +15,5 @@ configMapGenerator:
 
 images:
 - name: controller
-  newName: quay.io/llamastack/llama-stack-k8s-operator
-  newTag: latest
+  newName: quay.io/rh-ee-dkushwah/llama-stack-k8s-operator
+  newTag: sha256:50c94b99fe6ab9718427ad75d1fc0185ac57bfd1c1c29b37915863228c0f9d09
