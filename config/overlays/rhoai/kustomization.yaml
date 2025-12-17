@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Base configuration
+bases:
+- ../../default
+
+# Override the operator controller image with s390x build
+images:
+- name: controller
+  newName: quay.io/rh-ee-dkushwah/llama-stack-k8s-operator
+  digest: sha256:50c94b99fe6ab9718427ad75d1fc0185ac57bfd1c1c29b37915863228c0f9d09
+
+# Optional: Add any RHOAI-specific patches or configurations here
+# patches:
+# - path: manager_patch.yaml
+#   target:
+#     kind: Deployment
+#     name: controller-manager
+
+
