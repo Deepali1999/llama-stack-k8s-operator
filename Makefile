@@ -186,7 +186,7 @@ image-push: ## Push image with the manager.
 # To adequately provide solutions that are compatible with multiple platforms, you should consider using this option.
 # Note: The Dockerfile uses --platform=$BUILDPLATFORM for native cross-compilation, avoiding QEMU emulation
 # for Go builds which dramatically improves reliability and speed.
-PLATFORMS ?= linux/amd64,linux/arm64
+PLATFORMS ?= linux/amd64,linux/arm64,linux/s390x
 
 .PHONY: image-buildx
 image-buildx: ## Build and push multi-arch image with the manager (uses native cross-compilation)
@@ -230,6 +230,10 @@ endif
 .PHONY: image-build-arm
 image-build-arm: ## Build ARM64 image with the manager
 	$(CONTAINER_TOOL) build --platform linux/arm64 -t ${IMG} .
+
+.PHONY: image-build-s390x
+image-build-s390x: ## Build s390x image with the manager
+	$(CONTAINER_TOOL) build --platform linux/s390x -t ${IMG} .
 
 # Legacy docker-buildx target (deprecated, use image-buildx instead)
 .PHONY: docker-buildx
